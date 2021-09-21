@@ -1,0 +1,19 @@
+extends ../index.pug
+
+block append body
+  include ./includes/nav
+  .container.flex-fill.pt-5
+    .row.justify-content-center.align-content-center
+      .col-xs-12.col-md-6
+        form.card.shadow-lg.rounded-3.border-0(method='POST' action='/web/auth/login')
+          .card-body
+            h5.card-title.mb-3 Login
+            .mb-3
+              label.form-label(for='exampleInputEmail1') Email address
+              input#exampleInputEmail1.form-control(type='email' name='email')
+            .mb-3
+              label.form-label(for='exampleInputPassword1') Password
+              input#exampleInputPassword1.form-control(type='password' name='password')
+            p
+              a(href='/web/auth/password-reset') Forgot password
+            button.btn.btn-primary(type='submit') Submit

@@ -1,0 +1,16 @@
+-- CreateEnum
+CREATE TYPE "USER_VERIFY_STATUS" AS ENUM ('PENDING', 'ACCEPTED');
+
+-- CreateTable
+CREATE TABLE "VerifyUser" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "status" "USER_VERIFY_STATUS" NOT NULL DEFAULT E'PENDING',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "VerifyUser_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "VerifyUser" ADD CONSTRAINT "VerifyUser_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
